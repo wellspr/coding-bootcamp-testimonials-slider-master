@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap");
+/* First breakpoint - Medium */
+/* Testimonials max-width from small to medium */
+/* Second Breakpoint - Large */
+/* Extra-large breakpoint for fonts. */
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+
+.testimonial-text-box {
+  color: #202046;
+}
+
+.testimonial-text-box .testimonial .message {
+  line-height: 1.4;
+}
+
+.testimonial-text-box .user-id .name {
+  font-weight: 700;
+}
+
+.testimonial-text-box .user-id .position {
+  font-weight: 500;
+  color: #babacf;
+}
+
+@media screen and (max-width: 1023px) {
+  .message {
+    font-size: 1.1rem;
+  }
+  .user-id {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .message {
+    font-size: 1.6vw;
+  }
+  .user-id {
+    font-size: 1.1vw;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .message {
+    font-size: 23.04px;
+  }
+  .user-id {
+    font-size: 16.384px;
+  }
+}

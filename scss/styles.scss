@@ -1,0 +1,233 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// ## Colors -> Primary
+$dark-blue: hsl(240, 38%, 20%);
+$grayish-blue: hsl(240, 18%, 77%);
+
+// Mixins
+@mixin flex-centered(){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-column($prop){
+    display: flex;
+    flex-direction: column;
+    justify-content: $prop;
+}
+@mixin flex-row($prop){
+    display: flex;
+    flex-direction: row;
+    justify-content: $prop;
+}
+
+@mixin box-shadow($hlength, $vlength, $blur-radius, $spread-radius, $color){
+    box-shadow: $hlength $vlength $blur-radius $spread-radius $color;
+    -webkit-box-shadow: $hlength $vlength $blur-radius $spread-radius $color;
+    -moz-box-shadow: $hlength $vlength $blur-radius $spread-radius $color;
+}
+
+html{
+    min-height: 100vh;
+}
+body{
+    min-height: 100vh;
+}
+
+.outer-container{
+    @include flex-column(space-between);
+    min-height: 100vh;
+}
+
+.container{
+    @include flex-centered();
+    flex-grow: 1;
+    height: 100%;
+}
+
+.testimonials{
+    @include flex-centered();
+    @include box-shadow(2px, 5px, 20px, -5px, $grayish-blue);
+    margin: 0 15px;
+
+    .slide{
+
+        .slide-content{
+            background-image: url("../images/pattern-curve.svg");
+            background-repeat: no-repeat;
+            background-position: left 103%;
+            background-size: 90%;
+            padding: 5%;
+            padding-bottom: 20%;
+
+            .testimonial-image-box{
+                @include flex-centered();
+                background-image: url("../images/pattern-bg.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                width: 100%;
+
+                .image-box{
+                    @include flex-centered();
+                    width: 100%;
+                    padding: 11%;
+
+                    .image{
+                        overflow:hidden;
+                        position: relative;
+                        top: 24px;
+                        border-radius: 5px;
+                        @include box-shadow(-60px, 100px, 45px, -85px, $grayish-blue);
+
+                        .user-image{
+                            @include flex-centered();
+                            width: 100%;
+                            border-radius: 5px;
+                        }
+                    }
+                    .slider{
+                        @include flex-row(center);
+                        position: relative;
+                        top: 2px;
+                        background-color: #fff;
+                        border-radius: 30px;
+
+                        .prev, .next{
+                            padding: 15px;
+
+                            .arrow{
+                                @include flex-centered();
+                                width: 12px;
+                                height: 12px;
+                                overflow: hidden;
+                                &:hover{
+                                    transform: scale(1.2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .testimonial-text-box{
+                background-image: url("../images/pattern-quotes.svg");
+                background-repeat: no-repeat;
+                background-position: center top;
+                background-size: 18%;
+                text-align: center;
+
+                .testimonial{
+                    padding: 25px 15px 20px;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+.attribution{
+    font-size: 11px;
+    text-align: center;
+    padding: 10px;
+}
+.attribution a{
+    color: hsl(228, 45%, 44%);
+}
+
+$breakpoint-md: 768px; /* First breakpoint - Medium */
+$testimonials-max-width-1: 425px; /* Testimonials max-width from small to medium */
+
+$breakpoint-lg: 1024px; /* Second Breakpoint - Large */
+
+$breakpoint-xl: 1440px; /* Extra-large breakpoint for fonts. */
+
+// Sets the max-width for testimonials on small to medium screens
+@media screen and (max-width: $breakpoint-md - 1px){
+
+    .testimonials{
+        max-width: $testimonials-max-width-1;
+    }
+
+}
+
+// Medium Breakpoint
+@media screen and (min-width: $breakpoint-md){
+
+    .testimonials{
+        width: 55.3%;
+    }
+
+}
+
+
+// Large Breakpoint
+@media screen and (min-width: $breakpoint-lg){
+
+    .testimonials{
+        width: 70vw;
+        max-width: 1024px;
+        border-radius: 5px;
+
+        .slide{
+            width: 100%;
+
+            .slide-content{
+                @include flex-row(center);
+                align-items: center;
+                padding: 5%;
+                background-position: left 103%;
+                background-size: 50%;
+                width: 100%;
+
+                .testimonial-image-box{
+                    order: 1;
+                    min-width: 55%;
+                    .image-box{
+                        .image{
+                            @include box-shadow(-90px, 115px, 40px, -105px, $grayish-blue);
+                        }
+                    }
+                    .slider{
+                        align-self: flex-start;
+                        margin-left: 8%;
+                    }
+                }
+                .testimonial-text-box{
+                    order: 0;
+                    background-position: left 100px top; /* Quotes */
+                    background-size: 20%;
+                    padding-left: 8%;
+
+                    .testimonial{
+                        padding-top: 15%;
+                        padding-left: 0;
+
+                        .message{
+                            text-align: left;
+                            min-width: 140%;
+                            position: relative;
+                            z-index: 100;
+                        }
+
+                    }
+                    .user-id{
+                        @include flex-row(flex-start);
+
+                        .position{
+                            padding-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

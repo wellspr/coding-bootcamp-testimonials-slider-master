@@ -1,0 +1,68 @@
+// Typography
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+
+$dark-blue: hsl(240, 38%, 20%);
+$grayish-blue: hsl(240, 18%, 77%);
+
+$breakpoint-md: 768px; /* First breakpoint - Medium */
+$testimonials-max-width-1: 425px; /* Testimonials max-width from small to medium */
+
+$breakpoint-lg: 1024px; /* Second Breakpoint - Large */
+
+$breakpoint-xl: 1440px; /* Extra-large breakpoint for fonts. */
+
+body{
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+}
+
+// Typography
+.testimonial-text-box{
+    color: $dark-blue;
+    .testimonial{
+        .message{
+            line-height: 1.4;
+        }
+    }
+    .user-id{
+        .name{
+            font-weight: 700;
+        }
+        .position{
+            font-weight: 500;
+            color: $grayish-blue;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: $breakpoint-lg - 1px){
+
+    .message{
+        font-size: 1.1rem;
+    }
+    .user-id{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl - 1px){
+
+    .message{
+        font-size: 1.6vw;
+    }
+    .user-id{
+        font-size: 1.1vw;
+    }
+}
+
+@media screen and (min-width: $breakpoint-xl){
+
+    .message{
+        font-size: 23.04px;
+    }
+    .user-id{
+        font-size: 16.384px;
+    }
+}
